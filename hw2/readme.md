@@ -26,9 +26,17 @@
 
 ## Notes and Observations
 
-    I treated any stocks that did an initial public offering (IPO) during any years to be an outlier. This is because during the year 2015, when that happened, there were a total of 117 IPOS, but only one was included. [Here is the source of that data.](https://site.warrington.ufl.edu/ritter/files/2016/03/Initial-Public-Offerings-Updated-Statistics-2016-03-08.pdf)
+    I treated any stocks that did an initial public offering (IPO) during 
+    any years to be an outlier. This is because during the year 2015, when 
+    that happened, there were a total of 117 IPOS, but only one was included. 
+    [Here is the source of that data.](https://site.warrington.ufl.edu/ritter/files/2016/03/Initial-Public-Offerings-Updated-Statistics-2016-03-08.pdf)
 
-    Additionally, checking each time for just 1 stock would have been a minor performance hit. This stock was treated like an outlier and handled like an error.
+    Additionally, checking each time for just 1 stock would have been a 
+    minor performance hit. This stock was treated like an outlier and 
+    handled like an error.
 
     Additionally, there are opportunities to improve the performance of my code. 
+    Instead of assigning the ending stock price in each iteration of the loop, 
+    I could have just read it when the ticker changed. The code currently 
+    functions, however and the performance improvement has been added to technical debt.
 
