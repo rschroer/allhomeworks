@@ -28,6 +28,7 @@ with open(bankinfo, "r" ,newline='') as inputfile:
         month.append(row[0])
         profit_loss.append(float(row[1]))
 
+#Calculate the stats
 period=len(month)
 totals=sum(profit_loss)
 averages=totals/period
@@ -36,8 +37,10 @@ max_month=month[profit_loss.index(max(profit_loss))]
 minimum=min(profit_loss)
 min_month=month[profit_loss.index(min(profit_loss))]
 
+#Print to console
 print(format_output(period,totals,averages,max_month,maximum, min_month,minimum))
 
+#Write to file
 with open(out_filename, "w" ) as output:
     output.write(f"{format_output(period,totals,averages,max_month,maximum, min_month,minimum)}")
 
