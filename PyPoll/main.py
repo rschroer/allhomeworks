@@ -1,6 +1,7 @@
 import os
 import csv
 
+
 in_file=os.path.join(".","election_data.csv")
 out_file=os.path.join(".","poll_analysis.txt")
 
@@ -33,10 +34,14 @@ for elector in tally.keys():
     votecounter.clear()
     [votecounter.append(vote) for vote in votes_cast if vote==elector]
     tally[elector]=len(votecounter)
-    
+
+winner=[candidate for candidate, votes in tally.items() if votes==max(tally.values())]
 print(tally)
 
 print(f"Election Results")
 print(f"-------------------")
 for candidate in tally:
-    print(f"{candidate}: {round(tally[candidate]/total_votes*100,3)}")
+    print(f"{candidate}: {round(tally[candidate]/total_votes*100,3)} ({tally[candidate]})")
+print(f"-------------------")
+print(f"Winner: {winner[0]}")
+print(f"-------------------")
