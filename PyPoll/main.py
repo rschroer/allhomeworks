@@ -1,6 +1,6 @@
 import os
 import csv
-
+import datetime as dt
 
 in_file=os.path.join(".","election_data.csv")
 out_file=os.path.join(".","poll_analysis.txt")
@@ -9,6 +9,10 @@ candidates=[]
 votes_cast=[]
 tally={}
 votecounter=[]
+
+
+#this is for QAing runtime
+start_time=dt.datetime.now()
 
 #this function creates the output format
 
@@ -36,7 +40,6 @@ for elector in tally.keys():
     tally[elector]=len(votecounter)
 
 winner=[candidate for candidate, votes in tally.items() if votes==max(tally.values())]
-print(tally)
 
 print(f"Election Results")
 print(f"-------------------")
@@ -45,3 +48,7 @@ for candidate in tally:
 print(f"-------------------")
 print(f"Winner: {winner[0]}")
 print(f"-------------------")
+
+#this is for QAing runtime
+runtime=(dt.datetime.now()-start_time).total_seconds()
+print(runtime)
