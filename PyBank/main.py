@@ -1,11 +1,15 @@
 import os
 import csv
+import datetime as dt
 
 bankinfo=os.path.join(".","budget_data.csv")
 out_filename=os.path.join(".","Fin_analysis.txt")
 
 month=[]
 profit_loss=[]
+
+#this is for QAing runtime
+#start_time=dt.datetime.now()
 
 #The format output function is both the cli out and the file write formats
 def format_output(total_months, total, avg_change, great_month, greatest_increase, min_month,greatest_decrease):
@@ -44,3 +48,6 @@ print(format_output(period,totals,averages,max_month,maximum, min_month,minimum)
 with open(out_filename, "w" ) as output:
     output.write(f"{format_output(period,totals,averages,max_month,maximum, min_month,minimum)}")
 
+#this is for QAing runtime
+#runtime=(dt.datetime.now()-start_time).total_seconds()
+#print(runtime)
