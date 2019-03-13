@@ -65,7 +65,7 @@ us_state_abbrev = {
     'Wyoming': 'WY',
 }
 
-filename=os.path.join("./PyBoss","employee_data.csv")
+filename=os.path.join("./","employee_data.csv")
 
 with open(filename, "r",newline="") as csv_in:
     PII_Data=csv.reader(csv_in, delimiter=",")
@@ -79,7 +79,10 @@ with open(filename, "r",newline="") as csv_in:
 
 #format things
 
+
+
 new_DOB=[day.strftime("%m/%d/%Y") for day in DOB]
 new_DOB.insert(0,"DOB")
-
+new_SSN=["***-**-"+sn.split("-")[2] for sn in SSN]
+new_SSN.insert(0,"SSN")
 state.insert(0,"State")
