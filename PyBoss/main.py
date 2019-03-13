@@ -5,7 +5,8 @@ import datetime as dt
 #Used to determine Runtime
 startime=dt.datetime.now()
 
-filename=os.path.join("./","employee_data.csv")
+filename=os.path.join(".","employee_data.csv")
+outputfile=os.path.join(".","modified_employee_data.csv")
 Emp_ID=[]
 Name=[]
 SSN=[]
@@ -92,4 +93,6 @@ state.insert(0,"State")
 
 outputlist=zip(Emp_ID,first_name,last_name,new_DOB,new_SSN,state)
 
-print(outputlist[0])
+with open(outputfile, "w") as csv_out:
+    writer=csv.writer(csv_out)
+    writer.writerows(outputlist)
