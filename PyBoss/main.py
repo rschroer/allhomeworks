@@ -76,3 +76,10 @@ with open(filename, "r",newline="") as csv_in:
         DOB.append(dt.date.fromisoformat(row[2]))
         SSN.append(row[3])
         state.append(us_state_abbrev[row[4]])
+
+#format things
+
+new_DOB=[day.strftime("%m/%d/%Y") for day in DOB]
+new_DOB.insert(0,"DOB")
+
+state.insert(0,"State")
