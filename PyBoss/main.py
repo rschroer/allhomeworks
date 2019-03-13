@@ -5,6 +5,7 @@ import datetime as dt
 #Used to determine Runtime
 startime=dt.datetime.now()
 
+filename=os.path.join("./","employee_data.csv")
 Emp_ID=[]
 Name=[]
 SSN=[]
@@ -65,7 +66,7 @@ us_state_abbrev = {
     'Wyoming': 'WY',
 }
 
-filename=os.path.join("./","employee_data.csv")
+
 
 with open(filename, "r",newline="") as csv_in:
     PII_Data=csv.reader(csv_in, delimiter=",")
@@ -78,11 +79,17 @@ with open(filename, "r",newline="") as csv_in:
         state.append(us_state_abbrev[row[4]])
 
 #format things
-
-
-
+Emp_ID.insert(0,"Emp ID")
+first_name=[name.split(" ")[0] for name in Name]
+first_name.insert(0,"First Nane")
+last_name=[name.split(" ")[1] for name in Name]
+last_name.insert(0,"Last Name")
 new_DOB=[day.strftime("%m/%d/%Y") for day in DOB]
 new_DOB.insert(0,"DOB")
 new_SSN=["***-**-"+sn.split("-")[2] for sn in SSN]
 new_SSN.insert(0,"SSN")
 state.insert(0,"State")
+
+outputlist=zip(Emp_ID,first_name,last_name,new_DOB,new_SSN,state)
+
+print(outputlist[0])
