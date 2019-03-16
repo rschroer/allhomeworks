@@ -2,7 +2,7 @@ import os
 import re
 
 #user enters the file name
-input_file=os.path.join("raw_data", input("Please type the filename "))
+input_file=os.path.join("raw_data", input("Please type the filename in the raw data folder: "))
 #initial variables
 paragraph_text=""
 words=[]
