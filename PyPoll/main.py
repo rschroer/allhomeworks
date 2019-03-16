@@ -39,12 +39,15 @@ for elector in tally.keys():
     [votecounter.append(vote) for vote in votes_cast if vote==elector]
     tally[elector]=len(votecounter)
 
+
+sorted_tally=dict(sorted(tally.items(), key=lambda kv: kv[1], reverse=True))
 winner=[candidate for candidate, votes in tally.items() if votes==max(tally.values())]
+
 
 print(f"Election Results")
 print(f"-------------------")
-for candidate in tally:
-    print(f"{candidate}: {round(tally[candidate]/total_votes*100,3)} ({tally[candidate]})")
+for candidate in sorted_tally:
+    print(f"{candidate}: {round(sorted_tally[candidate]/total_votes*100,3)} ({sorted_tally[candidate]})")
 print(f"-------------------")
 print(f"Winner: {winner[0]}")
 print(f"-------------------")
@@ -52,3 +55,4 @@ print(f"-------------------")
 #this is for QAing runtime
 runtime=(dt.datetime.now()-start_time).total_seconds()
 print(runtime)
+
