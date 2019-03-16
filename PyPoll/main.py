@@ -2,20 +2,34 @@ import os
 import csv
 import datetime as dt
 
+#file settings
 in_file=os.path.join(".","election_data.csv")
 out_file=os.path.join(".","poll_analysis.txt")
 
+#initial declaration
 candidates=[]
 votes_cast=[]
 tally={}
 votecounter=[]
 
-
 #this is for QAing runtime
-start_time=dt.datetime.now()
+#start_time=dt.datetime.now()
 
 #this function creates the output format
-
+def format_output(voting_dictionary):
+    #calculate the winner
+    winner=[candidate for candidate, votes in tally.items() if votes==max(tally.values())]
+    #this loops gerneates the results display
+    format_helper=""
+    for candidate in voting_dictionary:
+        format_helper+=f"{candidate}: {round(sorted_tally[candidate]/total_votes*100,3)} ({sorted_tally[candidate]})\n"
+    output_string= (f"Election Results\n"
+                    f"-------------------\n"
+                    f"{format_helper}"
+                    f"-------------------\n"
+                    f"Winner: {winner[0]}\n"
+                    f"-------------------")
+    return output_string
 
 
 #read in the file
@@ -39,20 +53,21 @@ for elector in tally.keys():
     [votecounter.append(vote) for vote in votes_cast if vote==elector]
     tally[elector]=len(votecounter)
 
-
+#sort the vote tally
 sorted_tally=dict(sorted(tally.items(), key=lambda kv: kv[1], reverse=True))
-winner=[candidate for candidate, votes in tally.items() if votes==max(tally.values())]
 
+#format the output after realizing that I asigned this to a variable, 
+# I don't think I needed to make a function and it would be faster without one
+formatted_output=format_output(sorted_tally)
 
-print(f"Election Results")
-print(f"-------------------")
-for candidate in sorted_tally:
-    print(f"{candidate}: {round(sorted_tally[candidate]/total_votes*100,3)} ({sorted_tally[candidate]})")
-print(f"-------------------")
-print(f"Winner: {winner[0]}")
-print(f"-------------------")
+#write to std out
+print(formatted_output)
+
+#Write to file
+with open(out_file, "w" ) as output:
+    output.write(f"{formatted_output}")
 
 #this is for QAing runtime
-runtime=(dt.datetime.now()-start_time).total_seconds()
-print(runtime)
+#runtime=(dt.datetime.now()-start_time).total_seconds()
+#print(runtime)
 
