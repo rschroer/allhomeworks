@@ -1,65 +1,69 @@
 ## Homework 7
 
 #1a. Display the first and last names of all actors from the table actor.
-select first_name, last_name from actor;
+select first_name, last_name 
+from actor;
 
 #1b. Display the first and last name of each actor in a single column in upper case letters. Name the column Actor Name.
-select upper(concat(first_name , " " , last_name)) AS "Actor Name" from actor;
+select upper(concat(first_name , " " , last_name)) AS "Actor Name" 
+from actor;
 
 #2a. You need to find the ID number, first name, and last name of an actor, of whom you know only the first name, "Joe." What is one query would you use to obtain this information?
-select 
-	actor_id, first_name, last_name
-from 
-	actor
-where
-	first_name="Joe"
-;
+select actor_id, first_name, last_name
+from actor
+where first_name="Joe";
 
 #2b. Find all actors whose last name contain the letters GEN:
-select 
-	actor_id, first_name, last_name
-from 
-	actor
-where
-	last_name like "%GEN%"
-;
+select actor_id, first_name, last_name
+from actor
+where last_name like "%GEN%";
 
 #2c. Find all actors whose last names contain the letters LI. This time, order the rows by last name and first name, in that order:
-select 
-	actor_id, first_name, last_name
-from 
-	actor
-where
-	last_name like "%LI%"
-order by last_name, first_name
-;
+select actor_id, first_name, last_name
+from actor
+where last_name like "%LI%"
+order by last_name, first_name;
 
 #2d. Using IN, display the country_id and country columns of the following countries: Afghanistan, Bangladesh, and China:
-select 
-	country_id, country
-from
-	country
-where
-	country in ("Afghanistan", "Bangladesh",  "China" )
-;
+select country_id, country
+from country
+where country in ("Afghanistan", "Bangladesh",  "China" );
 
 #3a. You want to keep a description of each actor. You don't think you will be performing queries on a description, so create a column in the table actor named description and use the data type BLOB (Make sure to research the type BLOB, as the difference between it and VARCHAR are significant).
-
-
+ALTER TABLE actor ADD COLUMN description blob;
+#Added this to verify column add
+describe actor;
 #3b. Very quickly you realize that entering descriptions for each actor is too much effort. Delete the description column.
-
-
+Alter Table actor DROP COLUMN description;
+#Added this to verify column delete
+describe actor;
 #4a. List the last names of actors, as well as how many actors have that last name.
-
+select count(*), last_name
+from actor
+group by last_name;
 
 #4b. List last names of actors and the number of actors who have that last name, but only for names that are shared by at least two actors
-
+select count(*), last_name
+from actor
+group by last_name
+having count(*) > 1;
 
 #4c. The actor HARPO WILLIAMS was accidentally entered in the actor table as GROUCHO WILLIAMS. Write a query to fix the record.
+update actor
+set first_name="HARPO"
+where first_name= "GROUCHO" AND last_name="WILLIAMS"
+;
 
-
+select * from actor 
+where first_name= "HARPO" AND last_name="WILLIAMS";
 #4d. Perhaps we were too hasty in changing GROUCHO to HARPO. It turns out that GROUCHO was the correct name after all! In a single query, if the first name of the actor is currently HARPO, change it to GROUCHO.
+update actor
+set first_name="GROUCHO"
+where first_name= "HARPO" AND last_name="WILLIAMS"
+;
 
+select * from actor 
+where first_name= "GROUCHO" AND last_name="WILLIAMS";
 
 #5a. You cannot locate the schema of the address table. Which query would you use to re-create it?
 
