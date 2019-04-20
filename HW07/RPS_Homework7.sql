@@ -69,23 +69,67 @@ where first_name= "GROUCHO" AND last_name="WILLIAMS";
 
 #Hint: https://dev.mysql.com/doc/refman/5.7/en/show-create-table.html
 
+show create table address;
 
+#Results from show create table are below:
+# CREATE TABLE `address` (
+#  `address` varchar(50) NOT NULL,
+#  `address2` varchar(50) DEFAULT NULL,
+#  `district` varchar(20) NOT NULL,
+#  `city_id` smallint(5) unsigned NOT NULL,
+#  `postal_code` varchar(10) DEFAULT NULL,
+#  `phone` varchar(20) NOT NULL,
+#  `location` geometry NOT NULL,
+#  `last_update` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+#  PRIMARY KEY (`address_id`),
+#  KEY `idx_fk_city_id` (`city_id`),
+#  SPATIAL KEY `idx_location` (`location`),
+#  CONSTRAINT `fk_address_city` FOREIGN KEY (`city_id`) REFERENCES `city` (`city_id`) ON UPDATE CASCADE
+#) ENGINE=InnoDB AUTO_INCREMENT=606 DEFAULT CHARSET=utf8
 
 
 #6a. Use JOIN to display the first and last names, as well as the address, of each staff member. Use the tables staff and address:
+select * from staff limit 10; #looking at each table
+select * from address limit 10; #looking at each table
 
+select s.first_name, s.last_name, a.address
+from staff s
+join address a on s.address_id=a.address_id;
 
 #6b. Use JOIN to display the total amount rung up by each staff member in August of 2005. Use tables staff and payment.
+select * from payment limit 10; #Checking payment
+select sum(p.amount), s.first_name, s.last_name
+from payment p, staff s
+where p.staff_id=s.staff_id
+group by s.first_name, s.last_name;
 
 
 #6c. List each film and the number of actors who are listed for that film. Use tables film_actor and film. Use inner join.
+select * from film_actor limit 10; # looking at the Film Actor table
 
+select count(fa.actor_id), f.title
+from film f, film_actor fa
+where f.film_id = fa.film_id
+group by f.title;
 
 #6d. How many copies of the film Hunchback Impossible exist in the inventory system?
+select * from inventory limit 10; #looking at inventory table
+
+select count(i.inventory_id)
+from inventory i, film f
+where i.film_id=f.film_id
+AND f.title="Hunchback Impossible";
 
 
 #6e. Using the tables payment and customer and the JOIN command, list the total paid by each customer. List the customers alphabetically by last name:
+select * from payment limit 10;
+select * from customer limit 10;
 
+select sum(p.amount) ,c.last_name, c.first_name
+from payment p, customer c
+where p.customer_id=c.customer_id
+group by c.last_name, c.first_name
+order by c.last_name, c.first_name
 
 
 #7a. The music of Queen and Kris Kristofferson have seen an unlikely resurgence. As an unintended consequence, films starting with the letters K and Q have also soared in popularity. Use subqueries to display the titles of movies starting with the letters K and Q whose language is English.
