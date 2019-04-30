@@ -53,5 +53,28 @@ def stations():
         stations_list.append(dict(station=result[0],name=result[1],lattitude=result[2],longitude=result[3],elevation=result[4]))
     return(jsonify(stations_list))
 
+@app.route("/api/v1.0/tob/")
+def tob():
+    conn = sqlite3.connect("../Resources/hawaii.sqlite")
+    cur = conn.cursor()
+
+    #Find the highest date in the DB
+    cur.execute("SELECT MAX(date) FROM measurement")
+    max_date=cur.fetchall()
+    #Convert to a string
+    date_str=max_date[0][0]
+    #Convert to a date format
+    date_dt=dt.strptime(date_str,'%Y-%m-%d')
+    #Subtract a year to find the date for the query
+    new_date=date_dt.replace(date_dt.year-1)
+    #convert back to string
+    new_str=new_date.strftime('%Y-%m-%d')
+    #query for the data
+    cur.execute(f"SELECT date, tobs FROM measurement WHERE date > '{new_str}'")
+    result= cur.fetchall()
+    tobs_dict= {}
+    {tobs_dict.setdefault(key, []).append(tobs) for key, tobs in result}
+    return(jsonify(tobs_dict))
+
 if __name__ == "__main__":
     app.run(debug=True)
