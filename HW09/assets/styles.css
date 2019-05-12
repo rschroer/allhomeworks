@@ -1,0 +1,114 @@
+/* Overall Body stuff is mostly background collor */
+body {
+    /* Making color happen */
+    margin-bottom: 100px;
+    background-color: lightgrey;
+}  
+
+/* Navbar formatting */
+
+/* navbar background color*/
+.navbar-formats{
+    background-color:white;
+}
+
+/* main button and when dropdown is pressed coloring */
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color:lightseagreen !important;
+    color:white !important;
+}
+
+/* navbar plain link colors */
+.nav-link{
+    color:lightseagreen !important;
+}
+
+/* this makes page outer border */
+.outer-container{
+    width:90%
+}
+
+/* main page container */
+.container-left{
+    background-color:white;
+    padding:25px;
+    margin-top:50px;
+    margin-left:-2.5%;
+    width:90%;
+}
+
+/* main page container */
+.container-right{
+    background-color:white;
+    padding:25px;
+    margin-top:50px;
+    margin-right:-2.5%;
+    width:90%;
+}
+
+/* titles on all pages */
+.box-title{
+    color: lightseagreen;
+    padding-left:25px;
+}
+
+/* data page formatting */
+.data-page-format{
+    background-color:white;
+    width:90%;
+    margin-left:5%;
+    margin-top:50px;
+    padding:25px;
+    box-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+    /* override default class styling for positioning/padding */
+  
+    .description-content {
+      /* Box-model */
+      padding: 0;
+  
+      /* Positioning */
+      margin-top: 0;
+    }
+
+    .container-left{
+        width:100%;
+        margin-top:0px;
+        margin-left:0%;
+    }
+
+    .container-right{
+        width:100%;
+        margin-top:0px;
+        margin-left:0%;
+    }
+
+    body{
+        background-color:white;
+    }
+}
+
+.images{
+    width: 150px;
+    height: 150px;
+}  
+
+.images:hover {
+        opacity: 0.5;
+}
+      
+.images.active {
+        border: 2px solid #4aaaa5;
+}
+
+.visualization-text{
+    padding: 10%;
+    width:90%;
+}
+
+.comparison-images{
+    width: 500px;
+    height: 500px;
+}
