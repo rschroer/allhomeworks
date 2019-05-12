@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+ <title>Homework 9</title>
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">   
+ <link rel="stylesheet" href="./assets/styles.css">
+ <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+ <div class="container-fluid navbar-formats col-md-12" >
+        <ul class="nav nav-pills">
+         <li class="nav-item">
+          <a class="nav-link active" href="./index.html">Lattitude</a>
+         </li>
+         <li class="nav-item dropdown ml-md-auto navbar-formats">
+          <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown">Plots</a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="./fig1.html">Max Temperature</a> 
+            <a class="dropdown-item" href="./fig2.html">Humidity</a> 
+            <a class="dropdown-item" href="./fig3.html">Cloudiness</a>
+            <a class="dropdown-item" href="./fig4.html">Windspeed</a>
+            </div>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="./comparison.html">Comparison</a>
+         </li>
+         <li class="nav-item">
+          <a class="nav-link" href="./data.html">Data</a>
+         </li>
+        </ul>
+       </div>
+</head>
+
+<body>
+<div class="container outer-container col-md-12">
+       <div class="row">
+       <div class="container container-left col-md-8">
+              <div class="box-title">
+                     <h2>Humidity vs Temperature</h2>
+              </div>                     
+              <img class="img-fluid" alt="Lat vs Temp" src="./assets/images/Fig2.png" />
+              <p class="visualization-text">The graph shows no clear correlation between humidity and lattitude. 
+              </p>
+       </div>
+
+
+       <div class="container container-right col-md-4">
+                     <h2 class="box-title">Visualizations</h2>
+                     <div class="row">
+                         <div class="col-md-4">
+                             <a href="./fig1.html"><img class="img-fluid images" alt="Lat vs Temp" src="./assets/images/Fig1.png" /></a>
+                         </div>
+                         <div class="col-md-4">
+                             <a href="./fig2.html"><img class="img-fluid images active" alt="Lat vs Humidity" src="./assets/images/Fig2.png" /></a>
+                         </div>
+                     </div>
+                     <div class="row">
+                         <div class="col-md-4">
+                             <a href="./fig3.html"><img class="img-fluid images" alt="Lat vs Cloudiness" src="./assets/images/Fig3.png" /></a>
+                         </div>
+                         <div class="col-md-4">
+                             <a href="./fig4.html"><img class="img-fluid images" alt="Lat vs Windspeed" src="./assets/images/Fig4.png" /></a>
+                         </div>
+                     </div>
+                 </div>
+       </div>
+</div>
+</body>
