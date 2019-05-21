@@ -18,14 +18,22 @@ def init_browser():
     return Browser("chrome", **executable_path, headless=True)
 
 def mars_nasa_scrape():
-    url="https://mars.nasa.gov/news/"
-    listings={}
-    response=requests.get(url, headers=request_headers)
-    soup_requests = BeautifulSoup(response.text, 'lxml')
-    listings["headline"] =soup_requests.find("div", class_="content_title").get_text().strip()
-    listings["teaser"] = soup_requests.find("div", class_="rollover_description_inner").get_text().strip()
-    print(listings)
+    browser = init_browser()
+    listings = {}
+
+    url = "https://mars.nasa.gov/news/"
+    browser.visit(url)
+
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
+    
+    time.sleep(5)
+
+    listings["headline"] = soup.find("div", class_="content_title").get_text()
+    listings["teaser"] = soup.find("div", class_="rollover_description_inner").get_text()
+    
     return listings
+
 
 def jpl_image_scrape():
     browser = init_browser()
