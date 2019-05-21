@@ -1,0 +1,16 @@
+.weather{
+    background:lightgray;
+}
+
+.hemispheres{
+    padding:10px;
+    width: 100px;
+    height: 100px;
+
+}
+
+body{
+    padding:100px !important;
+    margin:10px !important;
+    width:90% !important
+}
