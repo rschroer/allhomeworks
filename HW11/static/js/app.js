@@ -8,6 +8,11 @@ tableContents = d3.select("tbody");
 function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
+
+function clearTable(){
+    tableContents.html("<tr></tr>")
+}
+
 function populateTable(dataSet){
     tableContents.append("tr").html(
                         "<td>"+String(dataSet.datetime)+"</td>"+
@@ -20,4 +25,14 @@ function populateTable(dataSet){
                         );
 }
 
+var filterDate= "1/11/2010";
+
+function filterByDate(ufo) {
+    return ufo.datetime === filterDate;
+  }
+
+var UfoMatches = tableData.filter(filterByDate);
+
 tableData.forEach(populateTable);
+
+UfoMatches.forEach(populateTable);
