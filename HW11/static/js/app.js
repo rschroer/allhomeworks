@@ -2,7 +2,7 @@
 var tableData = data;
 
 // Defining the contents of the table.
-tableContents = d3.select("tbody");
+var tableContents = d3.select("tbody");
 
 // Creating function to capitalize first letter of a string
 function capitalizeFirstLetter(string) {
@@ -32,13 +32,20 @@ function filterByDate(ufo) {
     return ufo.datetime === filterDate;
   }
 
-// Matched data that's filtered by date
-var UfoMatches = tableData.filter(filterByDate);
-
-var filterDate= "1/11/2010";
-
 // Initial adding the table data
 tableData.forEach(populateTable);
 
-// Test populating with filter
-UfoMatches.forEach(populateTable);
+// Getting the button
+var button = d3.select("#filter-btn");
+
+button.on("click", function() {
+    d3.event.preventDefault();
+    clearTable();
+    var dateInput=d3.select("#datetime")
+    filterDate = dateInput.property("value");
+    console.log(filterDate);
+    var UfoMatches = tableData.filter(filterByDate);
+    UfoMatches.forEach(populateTable);
+
+});
+
