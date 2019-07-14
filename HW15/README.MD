@@ -1,5 +1,7 @@
 ### Homework 15
 
+The data selected was between April 2017 and May 2019. This gives us 2 years of data to analyze for patterns and trends. The processing of the data can be viewed in the [Jupyter Notebook in this Github](https://github.com/rschroer/allhomeworks/blob/master/HW15/data/data_merger.ipynb)
+
 After plotting and analyszing the data, it would appear that the bulk of the CitiBike riders in this dataset use the bikes primarily as methods of commuting. This conclusion was reached by analyzing the number of riders with regard to several factors including time of day, day of week, month of year, top starting locations, and top destinations.
 
 On average, the overwhelming majority of riders are subscribers. Overall 93.79 percentage of riders are subscribers. While, there are some non subscribers, the non subscriber numbers tend to peak in the summer months, and dip in the winter months. This is shown in the dashboard [Rider Types.](https://public.tableau.com/profile/robert.schroer#!/vizhome/Homework15_15628841863330/RiderTypes)
